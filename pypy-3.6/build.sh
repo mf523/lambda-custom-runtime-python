@@ -4,7 +4,7 @@ VERSION=7.1.1-beta
 
 rm -rf layer
 mkdir -p layer
-cp bootstrap.py layer/bootstrap
+cp bootstrap layer/bootstrap
 chmod +x layer/bootstrap
 cd layer
 curl -OL https://bitbucket.org/squeaky/portable-pypy/downloads/pypy3.6-$VERSION-linux_x86_64-portable.tar.bz2
