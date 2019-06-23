@@ -11,7 +11,7 @@ RUN rm -rf /var/runtime /var/lang; \
 
 RUN rm -rf /opt/python/lib/python3.7/test; cd /opt; zip -r ../python37.zip .
 
-COPY bootstrap /opt/bootstrap
+COPY bootstrap.py /opt/bootstrap
 
 USER root
 
