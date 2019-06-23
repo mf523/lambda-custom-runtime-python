@@ -9,13 +9,15 @@ RUN rm -rf /var/runtime /var/lang; \
   cd Python-3.7.3 && ./configure --prefix=/opt/python --exec-prefix=/opt/python --without-doc-strings; \
   make && make install
 
-COPY requirements.txt /
-
-#RUN /opt/python/bin/pip3 install --upgrade pip; /opt/python/bin/pip3 install -r /requirements.txt
+RUN mkdir /build
 
 COPY bootstrap /opt/bootstrap
 
 RUN chmod a+x /opt/bootstrap; rm -rf /opt/python/lib/python3.7/test; cd /opt
+
+COPY requirements.txt /build
+
+RUN /opt/python/bin/pip3 install --upgrade pip; mkdir -p /build/python_libs/python/lib/python3.7/site-packages; /opt/python/bin/pip3 install -r /build/requirements.txt -t /build/python_libs/python/lib/python3.7/site-packages
 
 USER root
 
